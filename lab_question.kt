@@ -32,13 +32,23 @@ class attendanceMarker
 
 fun main()
 {
-    val student1 = student("Tarun",2002)
+    val student1 = student("Tarun",110)
+
+    val student2 = student("Vignesh",105)
 
     val marker = attendanceMarker()
 
     var currentDate = LocalDate.now()
 
-    val record = marker.markAttendance(student1,currentDate.toString(),true)
+    val record1 = marker.markAttendance(student1,currentDate.toString(),true)
+    val record2 = marker.markAttendance(student2,currentDate.toString(),false)
 
-    println("Roll Number: ${student1.rollNumber} \nStudent Name: ${student1.name} \nAttendance: ${status.getStatus()} \nDate: ${record.date}")
+    println("Roll Number: ${student1.rollNumber} \nStudent Name: ${student1.name} \nAttendance: ${record1.getStatus()} \nDate: ${record1.date}")
+
+    // println("\nRoll Number: ${student2.rollNumber} \nStudent Name: ${student2.name} \nAttendance: ${record2.getStatus()} \nDate: ${record2.date}")
+
+    marker.show(record2)
+    {
+        println("\nRoll Number: ${it.student.rollNumber} \nStudent Name: ${it.student.name} \nAttendance: ${record2.getStatus()} \nDate: ${record2.date}")
+    }
 }
